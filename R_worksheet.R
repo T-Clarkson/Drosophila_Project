@@ -44,7 +44,7 @@ print(total_abundance_df)
 list(unique(dros_data$collect_doy))
 
 
-#Labelling 
+#Labelling points with sampling session IDs (1-10) based on collection day, excluding D1 (Penryn)
 dros_data <- dros_data %>%
   mutate(
     sampling_session = case_when(
@@ -59,6 +59,28 @@ dros_data <- dros_data %>%
       collect_doy <= 316 ~ 8,
       collect_doy <= 319 ~ 9,
       collect_doy <= 322 ~ 10,
-      TRUE ~ NA_real_  # Default condition for any other case
+      TRUE ~ NA_real_ 
     )
   )
+#Setting the sampling session to be read as a character rather than numeric
+dros_data$sampling_session <- as.character(dros_data$sampling_session)
+
+
+#Creating a new data frame with the number of records for each species at each trap per sampling session
+sampling_records_dros <- dros_data %>%
+  group_by(trap_no, species, area_type, sampling_session) %>%
+  summarise(average_records = n())
+#Creating a new data frame using the previous one, calculating averages of species record numbers across the sampling sessions
+average_abun_dros <- sampling_records_dros %>%
+  group_by(trap_no, species, area_type) %>%
+  summarise(mean_records = mean(average_records, na.rm = TRUE))
+
+#Plotting a bar chart showing the species abundance across traps, comparing between disturbed and undisturbed
+ggplot(subset(average_abun_dros, trap_no != "D1", mean_records != "NA"), aes(x = trap_no, y = mean_records, fill = species)) +
+  geom_bar(stat = "identity", position = "stack", na.rm = T) +
+  facet_wrap(~area_type, scales = "free") +
+  coord_cartesian(ylim = c(0,65))
+  labs(title = "Average Abundance of Drosophila Species by Area Type",
+       x = "Trap Number",
+       y = "Average Abundance") +
+  theme_minimal()
