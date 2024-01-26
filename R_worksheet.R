@@ -85,3 +85,12 @@ ggplot(subset(average_abun_dros, trap_no != "D1", mean_records != "NA"), aes(x =
        x = "Trap Number",
        y = "Average Abundance") +
   theme_minimal()
+
+##Merging coordinate data with the current data
+
+#Setting the pathway for finding the data file
+coord_path <- "./data/site_coords.csv"
+#Reading in the CSV file using the preset pathway
+coord_data <- read_csv(coord_path, col_select = -c(4))
+#Adding coord data to the dros_data table to make new codros_data table
+codros_data <- dros_data %>% left_join(coord_data, by = "trap_no")
