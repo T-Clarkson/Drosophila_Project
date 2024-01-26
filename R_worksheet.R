@@ -75,11 +75,12 @@ average_abun_dros <- sampling_records_dros %>%
   group_by(trap_no, species, area_type) %>%
   summarise(mean_records = mean(average_records, na.rm = TRUE))
 
-#Plotting a bar chart showing the species abundance across traps, comparing between disturbed and undisturbed
+#Plotting a bar chart showing the species abundance across traps, comparing between disturbed and undisturbed (averaging across sampling sessions)
 ggplot(subset(average_abun_dros, trap_no != "D1", mean_records != "NA"), aes(x = trap_no, y = mean_records, fill = species)) +
   geom_bar(stat = "identity", position = "stack", na.rm = T) +
   facet_wrap(~area_type, scales = "free") +
-  coord_cartesian(ylim = c(0,65))
+  coord_cartesian(ylim = c(0,65)) +
+
   labs(title = "Average Abundance of Drosophila Species by Area Type",
        x = "Trap Number",
        y = "Average Abundance") +
