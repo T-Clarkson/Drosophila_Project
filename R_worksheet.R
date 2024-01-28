@@ -94,3 +94,12 @@ coord_path <- "./data/site_coords.csv"
 coord_data <- read_csv(coord_path, col_select = -c(4))
 #Adding coord data to the dros_data table to make new codros_data table
 codros_data <- dros_data %>% left_join(coord_data, by = "trap_no")
+
+#Creating a dataframe showing the species abundance at each site and sampling session
+
+total_site_abundance_df <- dros_data %>%
+  group_by(species, trap_no, collect_date) %>%
+  summarise(count = n()) %>%
+  pivot_wider(names_from = species, values_from = count, values_fill = 0)
+
+print(total_site_abundance_df)
