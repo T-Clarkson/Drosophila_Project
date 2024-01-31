@@ -2,6 +2,7 @@ library(pacman)
 library(dplyr)
 library(tidyr)
 library(lubridate)
+library(tibble)
 p_load(bookdown, tidyverse, ggforce, flextable, latex2exp, png, magick)
 
 #Setting the pathway for finding the data file
@@ -97,9 +98,33 @@ codros_data <- dros_data %>% left_join(coord_data, by = "trap_no")
 
 #Creating a dataframe showing the species abundance at each site and sampling session
 
-total_site_abundance_df <- dros_data %>%
-  group_by(species, trap_no, collect_date) %>%
+total_site_abundance_df_wide <- dros_data %>%
+  group_by(species, trap_no, collect_date, area_type) %>%
   summarise(count = n()) %>%
   pivot_wider(names_from = species, values_from = count, values_fill = 0)
 
-print(total_site_abundance_df)
+print(total_site_abundance_df_wide)
+
+#Checking for the number of sampling sessions at each site
+sampling_no_table <- total_site_abundance_df_wide %>%
+  group_by(trap_no) %>%
+  summarise(unique_dates = n_distinct(collect_date))
+
+print(sampling_no_table)
+
+#Rearranging total_site_abundance_df to longer format with species grouped under 'species' header
+
+total_site_abundance_df_long <- total_site_abundance_df_wide %>%
+  pivot_longer(cols = c(bus,fun,hyd,immi,mel,obs,sub,suz,tris,"NA"), names_to = "species", values_to = "count")
+
+#Barchart showing distribution of each species 
+
+ggplot(subset(total_site_abundance_df_long, trap_no != "D1"), aes(x = area_type, y = count, fill = factor(species, levels = c("immi","mel","suz", "sub", "obs", "bus", "fun", "hyd", "tris", "NA")))) +
+  geom_bar(stat = "identity", position = "stack", na.rm = T) +
+  labs(title = "Total Abundance of Drosophila species in Undisturbed and Disturbed Sites",
+       y = "Total abundance",
+       x = "Site Type",
+       fill = "Species") +
+  theme_minimal() +
+  scale_fill_brewer(palette="Set3") +
+  scale_x_discrete(labels = c("N"="Undisturbed","U"="Disturbed"))
