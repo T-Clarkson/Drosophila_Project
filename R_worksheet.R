@@ -3,7 +3,11 @@ library(dplyr)
 library(tidyr)
 library(lubridate)
 library(tibble)
+library(vegan)
 p_load(bookdown, tidyverse, ggforce, flextable, latex2exp, png, magick)
+install.packages("tidyr", dependencies = TRUE)
+
+remove.packages("cli")
 
 #Setting the pathway for finding the data file
 dros_path <- "./data/raw_data_drosophila.csv"
@@ -31,6 +35,9 @@ refill_dates <- as.Date(dros_data$refill_date)
 doy_refill_dates <- yday(refill_dates)
 dros_data$refill_doy <- yday(refill_dates)
 
+#Removing D1 traps - D1 excluded from sample
+
+dros_data <- dros_data[dros_data$trap_no != "D1", ]
 
 
 #Creating a data frame showing total number of species across urban/natural
@@ -121,10 +128,63 @@ total_site_abundance_df_long <- total_site_abundance_df_wide %>%
 
 ggplot(subset(total_site_abundance_df_long, trap_no != "D1"), aes(x = area_type, y = count, fill = factor(species, levels = c("immi","mel","suz", "sub", "obs", "bus", "fun", "hyd", "tris", "NA")))) +
   geom_bar(stat = "identity", position = "stack", na.rm = T) +
-  labs(title = "Total Abundance of Drosophila species in Undisturbed and Disturbed Sites",
+  labs(title = expression("Total Abundance of" ~ italic("Drosophila") ~ "species in Undisturbed and Disturbed Sites"),
        y = "Total abundance",
        x = "Site Type",
        fill = "Species") +
   theme_minimal() +
   scale_fill_brewer(palette="Set3") +
   scale_x_discrete(labels = c("N"="Undisturbed","U"="Disturbed"))
+
+###PerMANOVA
+
+#Reorganising data so rows represent trap_no and columns represent species abundance
+
+trap_no_abundance <- total_site_abundance_df_wide <- dros_data %>%
+  group_by(species, trap_no, area_type) %>%
+  summarise(count = n()) %>%
+  pivot_wider(names_from = species, values_from = count, values_fill = 0)
+
+
+#creating trap abundance dataframe without the NA column
+
+trap_no_abundance_noNA <- trap_no_abundance[, colnames(trap_no_abundance) != "NA"]
+
+
+#Fourth-root transformation of data to limit influence of common species (Alves de Mata et al, ? & Clarke, 1993)
+
+trans_trap_no_abundance_noNA <- trap_no_abundance_noNA %>%
+  mutate_if(is.numeric, function(x) x^(1/4))
+
+#Removing non-numeric columns to prepare for making dissimilarity matrix
+
+trans_trap_numeric <- trans_trap_no_abundance_noNA[, sapply(trans_trap_no_abundance_noNA, is.numeric) & colnames(trans_trap_no_abundance_noNA) != "NA"]
+
+#Creating dissimilarity matrix
+
+trans_trap_dist_matrix <- vegdist(trans_trap_numeric, method = "bray")
+
+#Ensuring the data is contained as a matrix
+
+trans_trap_dist_matrix <- as.matrix(trans_trap_numeric)
+
+#Running perMANOVA of area_type against the dissimilarity matrix
+
+trans_trap_perm_result <- adonis2(trans_trap_dist_matrix ~ area_type, data = trans_trap_no_abundance_noNA)
+
+#perMANOVA results
+
+trans_trap_perm_result
+
+########T-Tests comparing species abundance across area types (shows significant difference in hydei and melongaster abundance across area types)
+t.test(hyd~ area_type, data = total_site_abundance_df_wide)
+t.test(mel~ area_type, data = total_site_abundance_df_wide)
+
+t.test(bus~ area_type, data = total_site_abundance_df_wide)
+t.test(fun~ area_type, data = total_site_abundance_df_wide)
+t.test(immi~ area_type, data = total_site_abundance_df_wide)
+t.test(obs~ area_type, data = total_site_abundance_df_wide)
+t.test(suz~ area_type, data = total_site_abundance_df_wide)
+t.test(sub~ area_type, data = total_site_abundance_df_wide)
+t.test(tris~ area_type, data = total_site_abundance_df_wide)
+
