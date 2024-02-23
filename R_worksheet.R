@@ -224,4 +224,10 @@ mcIntosh_values <- heterogeneity(trap_numeric, method = "mcintosh")
 #Adding values to dataframe
 trap_no_abundance_noNA$mcIntosh_index <- mcIntosh_values
 
+#Running fixed effects model to observe effect of site type on the diversity indices
 
+me_model <- lm(cbind(berger_parker_index, shannon_index, simpsons_index, mcIntosh_index) ~ area_type, data = trap_no_abundance_noNA)
+
+summary(me_model)
+
+#Indicates that area type has no significant impact on any of the diversity indices.
