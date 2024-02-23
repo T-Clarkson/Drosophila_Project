@@ -4,8 +4,12 @@ library(tidyr)
 library(lubridate)
 library(tibble)
 library(vegan)
+library(tabula)
+library(lme4)
 p_load(bookdown, tidyverse, ggforce, flextable, latex2exp, png, magick)
 install.packages("tidyr", dependencies = TRUE)
+install.packages("folio")
+install.packages("tabula")
 
 remove.packages("cli")
 
@@ -177,14 +181,47 @@ trans_trap_perm_result <- adonis2(trans_trap_dist_matrix ~ area_type, data = tra
 trans_trap_perm_result
 
 ########T-Tests comparing species abundance across area types (shows significant difference in hydei and melongaster abundance across area types)
-t.test(hyd~ area_type, data = total_site_abundance_df_wide)
-t.test(mel~ area_type, data = total_site_abundance_df_wide)
+t.test(hyd~ area_type, data = trap_no_abundance_noNA)
+t.test(mel~ area_type, data = trap_no_abundance_noNA)
 
-t.test(bus~ area_type, data = total_site_abundance_df_wide)
-t.test(fun~ area_type, data = total_site_abundance_df_wide)
-t.test(immi~ area_type, data = total_site_abundance_df_wide)
-t.test(obs~ area_type, data = total_site_abundance_df_wide)
-t.test(suz~ area_type, data = total_site_abundance_df_wide)
-t.test(sub~ area_type, data = total_site_abundance_df_wide)
-t.test(tris~ area_type, data = total_site_abundance_df_wide)
+t.test(bus~ area_type, data = trap_no_abundance_noNA)
+t.test(fun~ area_type, data = trap_no_abundance_noNA)
+t.test(immi~ area_type, data = trap_no_abundance_noNA)
+t.test(obs~ area_type, data = trap_no_abundance_noNA)
+t.test(suz~ area_type, data = trap_no_abundance_noNA)
+t.test(sub~ area_type, data = trap_no_abundance_noNA)
+t.test(tris~ area_type, data = trap_no_abundance_noNA)
+
+
+#Calculating diversity metrics and adding these to the data frame.
+
+#Creating abundance dataframe containing only numeric data
+
+trap_numeric <- trap_no_abundance_noNA[, sapply(trap_no_abundance_noNA, is.numeric) & colnames(trap_no_abundance_noNA) != "NA"]
+
+
+#Simpson's
+
+simpsons_values <- diversity(trap_numeric, index = "simpson")
+# Adding values to dataframe
+trap_no_abundance_noNA$simpsons_index <- simpsons_values
+
+#Shannon's
+
+shannon_values <- diversity(trap_numeric, index = "shannon")
+# Adding values to dataframe
+trap_no_abundance_noNA$shannon_index <- shannon_values
+
+#Berger-Parker
+
+berger_parker_values <- apply(trap_numeric, 1, function(x) max(x) / sum(x))
+#Adding values to dataframe
+trap_no_abundance_noNA$berger_parker_index <- berger_parker_values
+
+#McIntosh
+
+mcIntosh_values <- heterogeneity(trap_numeric, method = "mcintosh")
+#Adding values to dataframe
+trap_no_abundance_noNA$mcIntosh_index <- mcIntosh_values
+
 
