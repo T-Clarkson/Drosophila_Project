@@ -230,4 +230,18 @@ me_model <- lm(cbind(berger_parker_index, shannon_index, simpsons_index, mcIntos
 
 summary(me_model)
 
+#Running T-Tests instead (more robust stats method for smaller sample size)
+
+t.test(berger_parker_index ~ area_type, data = trap_no_abundance_noNA)
+t.test(shannon_index ~ area_type, data = trap_no_abundance_noNA)
+t.test(simpsons_index ~ area_type, data = trap_no_abundance_noNA)
+t.test(mcIntosh_index ~ area_type, data = trap_no_abundance_noNA)
+
 #Indicates that area type has no significant impact on any of the diversity indices.
+
+#Adding coordinate data to the trap_no_abundance_noNA data frame
+trap_no_abundance_noNA_coord <- merge(trap_no_abundance_noNA, coord_data, by = "trap_no", all.x = TRUE)
+
+#Exporting trap_no_abundance_noNA_coord as a .csv, 'diversity_indices.csv'
+
+write.csv(trap_no_abundance_noNA_coord, "diversity_indices.csv", row.names = FALSE)
