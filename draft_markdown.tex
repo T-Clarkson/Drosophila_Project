@@ -1,0 +1,1656 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage{hhline}
+\newlength\Oldarrayrulewidth
+\newlength\Oldtabcolsep
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{wrapfig}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={The Code for `Fruit flies as bioindicators: Drosophila species distribution relative to environmental disturbance'},
+  pdfauthor={700041182},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{The Code for `Fruit flies as bioindicators: Drosophila species
+distribution relative to environmental disturbance'}
+\author{700041182}
+\date{2024-03-19}
+
+\begin{document}
+\maketitle
+
+\hypertarget{organising-the-data}{%
+\section{Organising the Data}\label{organising-the-data}}
+
+First, we ensure the necessary packages are installed and loaded.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(pacman)}
+\FunctionTok{p\_load}\NormalTok{(dplyr, tidyr, lubridate, tibble, vegan, tabula, lme4, flextable, readr, ggplot2, patchwork)}
+\end{Highlighting}
+\end{Shaded}
+
+Next, we load in the raw \emph{Drosophila} data by setting the pathway
+for the file and reading it in.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dros\_path }\OtherTok{\textless{}{-}} \StringTok{"./data/raw\_data\_drosophila.csv"}
+\NormalTok{dros\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(dros\_path, }\AttributeTok{col\_select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## Rows: 2021 Columns: 6
+## -- Column specification
+## -------------------------------------------------------- Delimiter: "," chr
+## (4): area_type, trap_no, species, notes date (2): refill_date, collect_date
+## i Use `spec()` to retrieve the full column specification for this data. i
+## Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## * `` -> `...7`
+## * `` -> `...8`
+\end{verbatim}
+
+By listing the unique species, we can see that there were some spelling
+mistakes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{list}\NormalTok{(}\FunctionTok{unique}\NormalTok{(dros\_data}\SpecialCharTok{$}\NormalTok{species))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+##  [1] "immi" "mel"  "sub"  "suz"  "obs"  "tris" "hyd"  "fun"  NA     "subs"
+## [11] "bus"
+\end{verbatim}
+
+Here, we correct these.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dros\_data}\SpecialCharTok{$}\NormalTok{species[dros\_data}\SpecialCharTok{$}\NormalTok{species }\SpecialCharTok{==} \StringTok{"subs"}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"sub"}
+\end{Highlighting}
+\end{Shaded}
+
+Trap 1 was not included in the final analyses, so we remove this from
+the data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dros\_data }\OtherTok{\textless{}{-}}\NormalTok{ dros\_data[dros\_data}\SpecialCharTok{$}\NormalTok{trap\_no }\SpecialCharTok{!=} \StringTok{"D1"}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+Now, we load the GPS data. We set the pathway for the GPS data and
+reading it in.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coord\_path }\OtherTok{\textless{}{-}} \StringTok{"./data/site\_coords.csv"}
+\NormalTok{coord\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(coord\_path, }\AttributeTok{col\_select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## Rows: 11 Columns: 3
+## -- Column specification
+## -------------------------------------------------------- Delimiter: "," chr
+## (1): trap_no dbl (2): lat, long
+## i Use `spec()` to retrieve the full column specification for this data. i
+## Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## * `` -> `...4`
+\end{verbatim}
+
+Next, we merge the GPS coordinates to the existing dataframe, adding
+latitude and longitude (`lat' and `long') columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{codros\_data }\OtherTok{\textless{}{-}}\NormalTok{ dros\_data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{left\_join}\NormalTok{(coord\_data, }\AttributeTok{by =} \StringTok{"trap\_no"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+For the PERMANOVA analysis, we require the data frame to be in a widened
+format. Here, we pivot the data so that we have columns for each
+detected species, quantifying the total abundance of each species across
+the traps.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trap\_no\_abundance }\OtherTok{\textless{}{-}}\NormalTok{ total\_site\_abundance\_df\_wide }\OtherTok{\textless{}{-}}\NormalTok{ dros\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(species, trap\_no, area\_type) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ species, }\AttributeTok{values\_from =}\NormalTok{ count, }\AttributeTok{values\_fill =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'species', 'trap_no'. You can override
+## using the `.groups` argument.
+\end{verbatim}
+
+For the sake of the PERMANOVA, we do not want `NA' to be counted as a
+species column, so we remove the `NA' column.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trap\_no\_abundance\_noNA }\OtherTok{\textless{}{-}}\NormalTok{ trap\_no\_abundance[, }\FunctionTok{colnames}\NormalTok{(trap\_no\_abundance) }\SpecialCharTok{!=} \StringTok{"NA"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{analysis}{%
+\section{Analysis}\label{analysis}}
+
+\hypertarget{permanova}{%
+\subsubsection{PERMANOVA}\label{permanova}}
+
+Before the PERMANOVA is ran, we fourth-root transform the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trans\_trap\_no\_abundance\_noNA }\OtherTok{\textless{}{-}}\NormalTok{ trap\_no\_abundance\_noNA }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate\_if}\NormalTok{(is.numeric, }\ControlFlowTok{function}\NormalTok{(x) x}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `mutate_if()` ignored the following grouping variables:
+## * Column `trap_no`
+\end{verbatim}
+
+To create the Bray-Curtis dissimilarity matrix, we must remove the
+non-numeric columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trans\_trap\_numeric }\OtherTok{\textless{}{-}}\NormalTok{ trans\_trap\_no\_abundance\_noNA[, }\FunctionTok{sapply}\NormalTok{(trans\_trap\_no\_abundance\_noNA, is.numeric)]}
+\end{Highlighting}
+\end{Shaded}
+
+Then, we can create the Bray-Curtis dissimilarity matrix and ensure that
+it is stored as a matrix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trans\_trap\_dist\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{vegdist}\NormalTok{(trans\_trap\_numeric, }\AttributeTok{method =} \StringTok{"bray"}\NormalTok{)}
+\NormalTok{trans\_trap\_dist\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(trans\_trap\_numeric)}
+\end{Highlighting}
+\end{Shaded}
+
+Finally, we can run the PERMANOVA.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trans\_trap\_perm\_result }\OtherTok{\textless{}{-}} \FunctionTok{adonis2}\NormalTok{(trans\_trap\_dist\_matrix }\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trans\_trap\_no\_abundance\_noNA)}
+
+\NormalTok{trans\_trap\_perm\_result}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Permutation test for adonis under reduced model
+## Terms added sequentially (first to last)
+## Permutation: free
+## Number of permutations: 999
+## 
+## adonis2(formula = trans_trap_dist_matrix ~ area_type, data = trans_trap_no_abundance_noNA)
+##           Df SumOfSqs      R2      F Pr(>F)
+## area_type  1 0.032674 0.17998 1.7559  0.184
+## Residual   8 0.148866 0.82002              
+## Total      9 0.181540 1.00000
+\end{verbatim}
+
+\hypertarget{species-abundance-t-tests}{%
+\subsubsection{Species Abundance
+T-Tests}\label{species-abundance-t-tests}}
+
+First we must run Shapiro-Wilks tests for normality of the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{hyd[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$hyd[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.55218, p-value = 0.000131
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{hyd[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$hyd[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.77091, p-value = 0.04595
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{mel[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$mel[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.85588, p-value = 0.2138
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{mel[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$mel[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.99896, p-value = 0.9996
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{bus[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$bus[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.68403, p-value = 0.00647
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{bus[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$bus[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.83274, p-value = 0.1458
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{fun[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$fun[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.68403, p-value = 0.00647
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{fun[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$fun[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.88104, p-value = 0.314
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{immi[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$immi[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.96463, p-value = 0.8398
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{immi[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$immi[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.70495, p-value = 0.01078
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{obs[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$obs[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.93102, p-value = 0.6034
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{obs[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$obs[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.68403, p-value = 0.00647
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{suz[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$suz[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.9064, p-value = 0.4462
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{suz[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$suz[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.82653, p-value = 0.131
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{sub[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$sub[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.90098, p-value = 0.4153
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{sub[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$sub[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.90202, p-value = 0.4211
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{tris[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$tris[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.90309, p-value = 0.4272
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{tris[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$tris[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.68403, p-value = 0.00647
+\end{verbatim}
+
+Then, we run Welch's two sample t-tests comparing the difference in the
+abundance of each species between disturbed and undisturbed sites. We
+apply transformations to achieve normality where necessary. Where
+transformation to normality is not possible, we instead use a
+Mann-Whitney U/Wilcoxon rank-sum test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wilcox.test}\NormalTok{(hyd }\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
+## compute exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  hyd by area_type
+## W = 3, p-value = 0.04198
+## alternative hypothesis: true location shift is not equal to 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(mel}\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  mel by area_type
+## t = -2.7802, df = 7.917, p-value = 0.02416
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -37.717447  -3.482553
+## sample estimates:
+## mean in group N mean in group U 
+##            22.8            43.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wilcox.test}\NormalTok{(bus}\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
+## compute exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  bus by area_type
+## W = 11, p-value = 0.8225
+## alternative hypothesis: true location shift is not equal to 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wilcox.test}\NormalTok{(fun}\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
+## compute exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  fun by area_type
+## W = 17, p-value = 0.3808
+## alternative hypothesis: true location shift is not equal to 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(}\FunctionTok{log10}\NormalTok{(immi)}\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  log10(immi) by area_type
+## t = -2.3349, df = 6.6493, p-value = 0.05413
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -0.737945565  0.008622942
+## sample estimates:
+## mean in group N mean in group U 
+##        1.600846        1.965508
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(obs}\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  obs by area_type
+## t = 1.3914, df = 6.0486, p-value = 0.2131
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -1.661387  6.061387
+## sample estimates:
+## mean in group N mean in group U 
+##             4.4             2.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(suz}\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  suz by area_type
+## t = 0.84935, df = 5.4324, p-value = 0.4315
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -39.8918  80.6918
+## sample estimates:
+## mean in group N mean in group U 
+##            55.2            34.8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(sub}\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  sub by area_type
+## t = 1.1536, df = 4.5709, p-value = 0.3054
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -3.361275  8.561275
+## sample estimates:
+## mean in group N mean in group U 
+##             5.8             3.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(tris)}\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  sqrt(tris) by area_type
+## t = 0.13956, df = 5.3248, p-value = 0.8941
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -1.120593  1.251759
+## sample estimates:
+## mean in group N mean in group U 
+##        1.358403        1.292820
+\end{verbatim}
+
+\hypertarget{diversity-index-t-tests}{%
+\subsubsection{Diversity Index T-Tests}\label{diversity-index-t-tests}}
+
+First, we need to calculate each of the diversity indices for each trap.
+To begin, we create a purely numeric data frame, containing only the
+species abundance columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trap\_numeric }\OtherTok{\textless{}{-}}\NormalTok{ trap\_no\_abundance\_noNA[, }\FunctionTok{sapply}\NormalTok{(trap\_no\_abundance\_noNA, is.numeric)]}
+\end{Highlighting}
+\end{Shaded}
+
+Next, we calculate each of the diversity indices, and add them to our
+`trap\_no\_abundance\_noNA' data frame as new columns.
+
+Simpsons's Diversity Index:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simpsons\_values }\OtherTok{\textless{}{-}} \FunctionTok{diversity}\NormalTok{(trap\_numeric, }\AttributeTok{index =} \StringTok{"simpson"}\NormalTok{)}
+\NormalTok{trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{simpsons\_index }\OtherTok{\textless{}{-}}\NormalTok{ simpsons\_values}
+\end{Highlighting}
+\end{Shaded}
+
+Shannon's Diversity Index:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{shannon\_values }\OtherTok{\textless{}{-}} \FunctionTok{diversity}\NormalTok{(trap\_numeric, }\AttributeTok{index =} \StringTok{"shannon"}\NormalTok{)}
+\NormalTok{trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{shannon\_index }\OtherTok{\textless{}{-}}\NormalTok{ shannon\_values}
+\end{Highlighting}
+\end{Shaded}
+
+Berger-Parker Index:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{berger\_parker\_values }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(trap\_numeric, }\DecValTok{1}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{max}\NormalTok{(x) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(x))}
+\NormalTok{trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{berger\_parker\_index }\OtherTok{\textless{}{-}}\NormalTok{ berger\_parker\_values}
+\end{Highlighting}
+\end{Shaded}
+
+McIntosh's Index:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mcIntosh\_values }\OtherTok{\textless{}{-}} \FunctionTok{heterogeneity}\NormalTok{(trap\_numeric, }\AttributeTok{method =} \StringTok{"mcintosh"}\NormalTok{)}
+\NormalTok{trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{mcIntosh\_index }\OtherTok{\textless{}{-}}\NormalTok{ mcIntosh\_values}
+\end{Highlighting}
+\end{Shaded}
+
+Next we check for normality of these indices.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{simpsons\_index[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$simpsons_index[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.95496, p-value = 0.7725
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{simpsons\_index[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$simpsons_index[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.86332, p-value = 0.2404
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{shannon\_index[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$shannon_index[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.98091, p-value = 0.9394
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{shannon\_index[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$shannon_index[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.85616, p-value = 0.2148
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{berger\_parker\_index[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$berger_parker_index[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.95422, p-value = 0.7672
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{berger\_parker\_index[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$berger_parker_index[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.88249, p-value = 0.3208
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{mcIntosh\_index[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$mcIntosh_index[trans_trap_no_abundance_noNA$area_type == "U"]
+## W = 0.97255, p-value = 0.8914
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{mcIntosh\_index[trans\_trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  trap_no_abundance_noNA$mcIntosh_index[trans_trap_no_abundance_noNA$area_type == "N"]
+## W = 0.8883, p-value = 0.3486
+\end{verbatim}
+
+Next we conduct the Welch's t-tests. All diversity data was normally
+distributed, so no transformations were necessary.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{((berger\_parker\_index) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  (berger_parker_index) by area_type
+## t = 0.87983, df = 7.9571, p-value = 0.4047
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -0.1232302  0.2750443
+## sample estimates:
+## mean in group N mean in group U 
+##       0.5928801       0.5169730
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{((shannon\_index) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  (shannon_index) by area_type
+## t = -0.20073, df = 7.7846, p-value = 0.8461
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -0.4160281  0.3496954
+## sample estimates:
+## mean in group N mean in group U 
+##        1.206397        1.239564
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{((simpsons\_index) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  (simpsons_index) by area_type
+## t = -0.55559, df = 7.4115, p-value = 0.5949
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -0.2149122  0.1323906
+## sample estimates:
+## mean in group N mean in group U 
+##       0.5788889       0.6201497
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{((mcIntosh\_index) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ area\_type, }\AttributeTok{data =}\NormalTok{ trap\_no\_abundance\_noNA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  (mcIntosh_index) by area_type
+## t = -0.46444, df = 7.8613, p-value = 0.6549
+## alternative hypothesis: true difference in means between group N and group U is not equal to 0
+## 95 percent confidence interval:
+##  -0.1717833  0.1143347
+## sample estimates:
+## mean in group N mean in group U 
+##       0.3915911       0.4203154
+\end{verbatim}
+
+Finally, we merge this data frame containing total abundances and
+diversity index values of each trap with the coordinate data. We export
+this data frame to use for spatial autocorrelation analyses in ArcGIS
+Pro.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trap\_no\_abundance\_noNA\_coord }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(trap\_no\_abundance\_noNA, coord\_data, }\AttributeTok{by =} \StringTok{"trap\_no"}\NormalTok{, }\AttributeTok{all.x =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{write.csv}\NormalTok{(trap\_no\_abundance\_noNA\_coord, }\StringTok{"abundances\_coord.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{summary-statistics}{%
+\subsubsection{Summary Statistics}\label{summary-statistics}}
+
+To report the results of the t-tests, we're interested in the
+accompanying means and standard errors. The t-tests/Mann-Whitney U tests
+with significant results were that of \emph{D. melanogaster} and
+\emph{D. hydei}, so we find their means and standard errors to report.
+
+\emph{D. melanogaster}:
+
+Disturbed mean:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{mel[trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 43.4
+\end{verbatim}
+
+Disturbed standard error:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{mel[trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{]) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{sum}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.500909
+\end{verbatim}
+
+Undisturbed mean:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{mel[trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 22.8
+\end{verbatim}
+
+Undisturbed standard error:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{mel[trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{]) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{sum}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.963869
+\end{verbatim}
+
+\emph{D. hydei}:
+
+Disturbed mean:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{hyd[trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.8
+\end{verbatim}
+
+Disturbed standard error:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{hyd[trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{]) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{sum}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8
+\end{verbatim}
+
+Undisturbed mean:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{hyd[trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"N"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2
+\end{verbatim}
+
+Undisturbed standard error:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{hyd[trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{]) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{sum}\NormalTok{(trap\_no\_abundance\_noNA}\SpecialCharTok{$}\NormalTok{area\_type}\SpecialCharTok{==}\StringTok{"U"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8
+\end{verbatim}
+
+\hypertarget{figures-and-tables}{%
+\subsubsection{Figures and Tables}\label{figures-and-tables}}
+
+Table 1:
+
+First, the values where manually inputted into a Microsoft Excel
+spreadsheet which we import.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ttest\_path }\OtherTok{\textless{}{-}} \StringTok{"./data/t\_test\_results.csv"}
+\NormalTok{ttest\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(ttest\_path)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 6 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): Species
+## dbl (3): t test statistic, Degrees of freedom, p-value
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wilcox\_path }\OtherTok{\textless{}{-}} \StringTok{"./data/wilcoxon\_results.csv"}
+\NormalTok{wilcox\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(wilcox\_path)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 3 Columns: 3
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): Species
+## dbl (2): W test statistic, p-value
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+Next we create two tables. One for the t-test results and another for
+the Mann-Whitney U/Wilcoxon rank-sum tests.
+
+T-tests:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ttest\_data }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  flextable }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{width}\NormalTok{(., }\AttributeTok{width =}\NormalTok{ (}\FloatTok{6.49605}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{ncol}\NormalTok{(ttest\_data)))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{italic}\NormalTok{(}\AttributeTok{italic=}\NormalTok{T, }\AttributeTok{part =} \StringTok{"body"}\NormalTok{, }\AttributeTok{j =} \StringTok{"Species"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{color}\NormalTok{(}\AttributeTok{color=}\StringTok{"\#4DAC23"}\NormalTok{, }\AttributeTok{j =} \StringTok{"p{-}value"}\NormalTok{, }\AttributeTok{i =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: fonts used in `flextable` are ignored because the `pdflatex` engine is
+## used and not `xelatex` or `lualatex`. You can avoid this warning by using the
+## `set_flextable_defaults(fonts_ignore=TRUE)` command or use a compatible engine
+## by defining `latex_engine: xelatex` in the YAML header of the R Markdown
+## document.
+\end{verbatim}
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{1.62in}|p{1.62in}|p{1.62in}|p{1.62in}}
+
+
+
+\ascline{1.5pt}{666666}{1-4}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Species}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{t\ test\ statistic}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Degrees\ of\ freedom}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{p-value}}} \\
+
+\ascline{1.5pt}{666666}{1-4}\endfirsthead 
+
+\ascline{1.5pt}{666666}{1-4}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Species}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{t\ test\ statistic}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Degrees\ of\ freedom}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{p-value}}} \\
+
+\ascline{1.5pt}{666666}{1-4}\endhead
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ melanogaster}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-2.80}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{7.92}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{4DAC23}{\fontsize{11}{11}\selectfont{0.024}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ immigrans}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-2.34}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{6.65}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.054}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ obscura}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{1.39}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{6.05}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.213}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ suzukii}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.85}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{5.43}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.432}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ subobscura}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{1.15}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{4.57}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.305}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ tristis}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.14}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{5.33}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.62in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.894}}} \\
+
+\ascline{1.5pt}{666666}{1-4}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+Mann-Whitney U:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wilcox\_data }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  flextable }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{width}\NormalTok{(., }\AttributeTok{width =}\NormalTok{ (}\FloatTok{6.49605}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{ncol}\NormalTok{(wilcox\_data)))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{italic}\NormalTok{(}\AttributeTok{italic=}\NormalTok{T, }\AttributeTok{part =} \StringTok{"body"}\NormalTok{, }\AttributeTok{j =} \StringTok{"Species"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{color}\NormalTok{(}\AttributeTok{color=}\StringTok{"\#4DAC23"}\NormalTok{, }\AttributeTok{j =} \StringTok{"p{-}value"}\NormalTok{, }\AttributeTok{i =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: fonts used in `flextable` are ignored because the `pdflatex` engine is
+## used and not `xelatex` or `lualatex`. You can avoid this warning by using the
+## `set_flextable_defaults(fonts_ignore=TRUE)` command or use a compatible engine
+## by defining `latex_engine: xelatex` in the YAML header of the R Markdown
+## document.
+\end{verbatim}
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{2.17in}|p{2.17in}|p{2.17in}}
+
+
+
+\ascline{1.5pt}{666666}{1-3}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Species}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{W\ test\ statistic}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{p-value}}} \\
+
+\ascline{1.5pt}{666666}{1-3}\endfirsthead 
+
+\ascline{1.5pt}{666666}{1-3}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Species}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{W\ test\ statistic}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{p-value}}} \\
+
+\ascline{1.5pt}{666666}{1-3}\endhead
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ hydei}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{3}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{4DAC23}{\fontsize{11}{11}\selectfont{0.04}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ busckii}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.82}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ funebris}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{17}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 2.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.38}}} \\
+
+\ascline{1.5pt}{666666}{1-3}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+These tables were then manually combined in Microsoft word.
+
+Figure 2:
+
+To create a bar chart showing the mean abundances of species across
+disturbed and undisturbed sites, we first need to re-organise the data
+and add new columns with the standard error and mean values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  trap\_no\_abundance\_noNA\_long }\OtherTok{\textless{}{-}}\NormalTok{ trap\_no\_abundance\_noNA }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{gather}\NormalTok{(}\AttributeTok{key =} \StringTok{"species"}\NormalTok{, }\AttributeTok{value =} \StringTok{"abundance"}\NormalTok{, }\SpecialCharTok{{-}}\NormalTok{trap\_no, }\SpecialCharTok{{-}}\NormalTok{area\_type, }\SpecialCharTok{{-}}\NormalTok{berger\_parker\_index,}\SpecialCharTok{{-}}\NormalTok{mcIntosh\_index,}\SpecialCharTok{{-}}\NormalTok{shannon\_index,}\SpecialCharTok{{-}}\NormalTok{simpsons\_index)}
+  
+
+\NormalTok{  trap\_abundance\_summary\_data }\OtherTok{\textless{}{-}}\NormalTok{ trap\_no\_abundance\_noNA\_long }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(species, area\_type) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_abundance =} \FunctionTok{mean}\NormalTok{(abundance),}
+              \AttributeTok{se =} \FunctionTok{sd}\NormalTok{(abundance) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{n}\NormalTok{()))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'species'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+Then, we can plot the chart.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{ggplot}\NormalTok{(trap\_abundance\_summary\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ species, }\AttributeTok{y =}\NormalTok{ mean\_abundance, }\AttributeTok{fill =}\NormalTok{ area\_type)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_errorbar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ mean\_abundance }\SpecialCharTok{{-}}\NormalTok{ se, }\AttributeTok{ymax =}\NormalTok{ mean\_abundance }\SpecialCharTok{+}\NormalTok{ se), }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Mean Abundance across Trapping Sites"}\NormalTok{,}
+         \AttributeTok{x =} \StringTok{"Species"}\NormalTok{,}
+         \AttributeTok{fill =} \StringTok{"Area Type"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"\#1F77B4"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"\#9E2626"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"Undisturbed"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"Disturbed"}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"immi"}\OtherTok{=}\StringTok{"D. immigrans"}\NormalTok{,}\StringTok{"mel"}\OtherTok{=}\StringTok{"D. melanogaster"}\NormalTok{, }\StringTok{"suz"}\OtherTok{=}\StringTok{"D. suzukii"}\NormalTok{, }\StringTok{"sub"}\OtherTok{=}\StringTok{"D. subobscura"}\NormalTok{, }\StringTok{"obs"}\OtherTok{=}\StringTok{"D. obscura"}\NormalTok{, }\StringTok{"bus"}\OtherTok{=}\StringTok{"D. busckii"}\NormalTok{, }\StringTok{"fun"}\OtherTok{=}\StringTok{"D. funebris"}\NormalTok{, }\StringTok{"hyd"}\OtherTok{=}\StringTok{"D. hydei"}\NormalTok{, }\StringTok{"tris"}\OtherTok{=}\StringTok{"D. tristis"}\NormalTok{, }\StringTok{"NA"}\OtherTok{=}\StringTok{"NA"}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{draft_markdown_files/figure-latex/unnamed-chunk-36-1.pdf}
+
+Figure 3:
+
+To create a plot containing a bar chart comparing each of the diversity
+index values between disturbed and undisturbed sites, we start by
+ensuring that all of the diversity indices are stored as numeric values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{trap\_no\_abundance\_noNA }\OtherTok{\textless{}{-}}\NormalTok{ trap\_no\_abundance\_noNA }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(simpsons\_index, shannon\_index, berger\_parker\_index, mcIntosh\_index), as.numeric))}
+\end{Highlighting}
+\end{Shaded}
+
+Next, we re-organise the data and add the mean and standard errors as
+new columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  summary\_diversity\_data }\OtherTok{\textless{}{-}}\NormalTok{ trap\_no\_abundance\_noNA }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(simpsons\_index, shannon\_index, berger\_parker\_index, mcIntosh\_index),}
+                 \AttributeTok{names\_to =} \StringTok{"diversity\_index"}\NormalTok{,}
+                 \AttributeTok{values\_to =} \StringTok{"value"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(area\_type, diversity\_index) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_value =} \FunctionTok{mean}\NormalTok{(value),}
+              \AttributeTok{se =} \FunctionTok{sd}\NormalTok{(value) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{n}\NormalTok{()),}
+              \AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Now, we create individual charts for each diversity index.
+
+Simpson's Index:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  plot\_simpsons }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(summary\_diversity\_data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(diversity\_index }\SpecialCharTok{==} \StringTok{"simpsons\_index"}\NormalTok{), }
+                          \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ area\_type, }\AttributeTok{y =}\NormalTok{ mean\_value, }\AttributeTok{fill =}\NormalTok{ area\_type)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_errorbar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ mean\_value }\SpecialCharTok{{-}}\NormalTok{ se, }\AttributeTok{ymax =}\NormalTok{ mean\_value }\SpecialCharTok{+}\NormalTok{ se), }
+                  \AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{), }
+                  \AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Mean Diversity Index Value"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Area Type"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{)}\SpecialCharTok{+}
+    \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"\#4A2354"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"\#BB8FCE"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"Undisturbed"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"Disturbed"}\NormalTok{))}\SpecialCharTok{+}
+    \FunctionTok{theme\_minimal}\NormalTok{()}\SpecialCharTok{+}
+    \FunctionTok{ylim}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"}\OtherTok{=}\StringTok{"Undisturbed"}\NormalTok{,}\StringTok{"U"}\OtherTok{=}\StringTok{"Disturbed"}\NormalTok{))}\SpecialCharTok{+}
+    \FunctionTok{guides}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Shannon's Index:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  plot\_shannon }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(summary\_diversity\_data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(diversity\_index }\SpecialCharTok{==} \StringTok{"shannon\_index"}\NormalTok{), }
+                         \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ area\_type, }\AttributeTok{y =}\NormalTok{ mean\_value, }\AttributeTok{fill =}\NormalTok{ area\_type)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_errorbar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ mean\_value }\SpecialCharTok{{-}}\NormalTok{ se, }\AttributeTok{ymax =}\NormalTok{ mean\_value }\SpecialCharTok{+}\NormalTok{ se), }
+                  \AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{), }
+                  \AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Mean Diversity Index Value"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Area Type"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"\#0B5345"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"\#73C6B6"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"Undisturbed"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"Disturbed"}\NormalTok{))}\SpecialCharTok{+}
+    \FunctionTok{theme\_minimal}\NormalTok{()}\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"}\OtherTok{=}\StringTok{"Undisturbed"}\NormalTok{,}\StringTok{"U"}\OtherTok{=}\StringTok{"Disturbed"}\NormalTok{))}\SpecialCharTok{+}
+    \FunctionTok{guides}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Berger-Parker Index:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  plot\_berger\_parker }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(summary\_diversity\_data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(diversity\_index }\SpecialCharTok{==} \StringTok{"berger\_parker\_index"}\NormalTok{), }
+                               \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ area\_type, }\AttributeTok{y =}\NormalTok{ mean\_value, }\AttributeTok{fill =}\NormalTok{ area\_type)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_errorbar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ mean\_value }\SpecialCharTok{{-}}\NormalTok{ se, }\AttributeTok{ymax =}\NormalTok{ mean\_value }\SpecialCharTok{+}\NormalTok{ se), }
+                  \AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{), }
+                  \AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Mean Diversity Index Value"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Area Type"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{)}\SpecialCharTok{+}
+    \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"\#7D6608"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"\#F7DC6F"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"Undisturbed"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"Disturbed"}\NormalTok{))}\SpecialCharTok{+}
+    \FunctionTok{theme\_minimal}\NormalTok{()}\SpecialCharTok{+}
+    \FunctionTok{ylim}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"}\OtherTok{=}\StringTok{"Undisturbed"}\NormalTok{,}\StringTok{"U"}\OtherTok{=}\StringTok{"Disturbed"}\NormalTok{))}\SpecialCharTok{+}
+    \FunctionTok{guides}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+McIntosh's Index:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  plot\_mcintosh }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(summary\_diversity\_data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(diversity\_index }\SpecialCharTok{==} \StringTok{"mcIntosh\_index"}\NormalTok{), }
+                          \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ area\_type, }\AttributeTok{y =}\NormalTok{ mean\_value, }\AttributeTok{fill =}\NormalTok{ area\_type)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_errorbar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ mean\_value }\SpecialCharTok{{-}}\NormalTok{ se, }\AttributeTok{ymax =}\NormalTok{ mean\_value }\SpecialCharTok{+}\NormalTok{ se), }
+                  \AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.9}\NormalTok{), }
+                  \AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Mean Diversity Index Value"}\NormalTok{, }\AttributeTok{x =} \StringTok{""}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"\#6E2C00"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"\#E59866"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"} \OtherTok{=} \StringTok{"Undisturbed"}\NormalTok{, }\StringTok{"U"} \OtherTok{=} \StringTok{"Disturbed"}\NormalTok{))}\SpecialCharTok{+} 
+    \FunctionTok{theme\_minimal}\NormalTok{()}\SpecialCharTok{+}
+    \FunctionTok{ylim}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}\SpecialCharTok{+}
+    \FunctionTok{scale\_x\_discrete}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"N"}\OtherTok{=}\StringTok{"Undisturbed"}\NormalTok{,}\StringTok{"U"}\OtherTok{=}\StringTok{"Disturbed"}\NormalTok{))}\SpecialCharTok{+}
+    \FunctionTok{guides}\NormalTok{(}\AttributeTok{fill=}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Next, we combine these charts into a single plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ combined\_plots }\OtherTok{\textless{}{-}}\NormalTok{ plot\_simpsons }\SpecialCharTok{+}\NormalTok{ plot\_shannon }\SpecialCharTok{+}\NormalTok{ plot\_berger\_parker }\SpecialCharTok{+}\NormalTok{ plot\_mcintosh}
+ 
+
+\NormalTok{ combined\_plots }\SpecialCharTok{+} \FunctionTok{plot\_layout}\NormalTok{(}\AttributeTok{guides =} \StringTok{\textquotesingle{}collect\textquotesingle{}}\NormalTok{, }\AttributeTok{axes =} \StringTok{\textquotesingle{}collect\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{plot\_annotation}\NormalTok{(}\AttributeTok{tag\_levels =} \StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{draft_markdown_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+Table 2:
+
+To create a table of the spatial autocorrelation (Global Moran's I)
+results, data from the ArcGIS Pro analyses was entered into a Microsoft
+Excel spreadsheet. We then import this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{autocor\_path }\OtherTok{\textless{}{-}} \StringTok{"./data/autocorrelation\_results.csv"}
+\NormalTok{autocor\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(autocor\_path)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 9 Columns: 6
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): Species
+## dbl (5): Moran's Index, Expected Index, Variance, z-score, p-value
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+Next, we create a table using this data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{autocor\_data }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  flextable }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{width}\NormalTok{(., }\AttributeTok{width =}\NormalTok{ (}\FloatTok{6.49605}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{ncol}\NormalTok{(autocor\_data)))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{italic}\NormalTok{(}\AttributeTok{italic=}\NormalTok{T, }\AttributeTok{part =} \StringTok{"body"}\NormalTok{, }\AttributeTok{j =} \StringTok{"Species"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{color}\NormalTok{(}\AttributeTok{color=}\StringTok{"\#4DAC23"}\NormalTok{, }\AttributeTok{j =} \StringTok{"p{-}value"}\NormalTok{, }\AttributeTok{i =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: fonts used in `flextable` are ignored because the `pdflatex` engine is
+## used and not `xelatex` or `lualatex`. You can avoid this warning by using the
+## `set_flextable_defaults(fonts_ignore=TRUE)` command or use a compatible engine
+## by defining `latex_engine: xelatex` in the YAML header of the R Markdown
+## document.
+\end{verbatim}
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{1.08in}|p{1.08in}|p{1.08in}|p{1.08in}|p{1.08in}|p{1.08in}}
+
+
+
+\ascline{1.5pt}{666666}{1-6}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Species}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Moran's\ Index}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Expected\ Index}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Variance}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{z-score}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{p-value}}} \\
+
+\ascline{1.5pt}{666666}{1-6}\endfirsthead 
+
+\ascline{1.5pt}{666666}{1-6}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Species}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Moran's\ Index}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Expected\ Index}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{Variance}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{z-score}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{p-value}}} \\
+
+\ascline{1.5pt}{666666}{1-6}\endhead
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ busckii}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.35}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.04}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-1.26}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.206}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ funebris}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.19}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.04}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{1.55}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.121}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ hydei}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.05}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.04}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.33}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.741}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ immigrans}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.10}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.01}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{2.10}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{4DAC23}{\fontsize{11}{11}\selectfont{0.036}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ melanogaster}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.24}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.03}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{1.93}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.053}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ obscura}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.07}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.03}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.23}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.818}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ subobscura}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.10}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.03}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.07}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.944}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ suzukii}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.12}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.03}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.05}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.960}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{D.\ tristis}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.24}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.11}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.02}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{-0.91}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 1.08in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{0.364}}} \\
+
+\ascline{1.5pt}{666666}{1-6}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+\end{document}

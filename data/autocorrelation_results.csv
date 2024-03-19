@@ -1,0 +1,10 @@
+﻿Species,Moran's Index,Expected Index,Variance,z-score,p-value
+D. busckii ,-0.35,-0.11,0.04,-1.26,0.206
+D. funebris,0.19,-0.11,0.04,1.55,0.121
+D. hydei,-0.05,-0.11,0.04,0.33,0.741
+D. immigrans,0.1,-0.11,0.01,2.1,0.036
+D. melanogaster,0.24,-0.11,0.03,1.93,0.053
+D. obscura,-0.07,-0.11,0.03,0.23,0.818
+D. subobscura,-0.1,-0.11,0.03,0.07,0.944
+D. suzukii,-0.12,-0.11,0.03,-0.05,0.96
+D. tristis,-0.24,-0.11,0.02,-0.91,0.364
